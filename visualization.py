@@ -48,6 +48,9 @@ with conn:
     
     bar_ax.bar(variety, grade)
     bar_ax.set_xticklabels(variety, rotation=45, ha = 'right', fontsize = 5)
+    bar_ax.set_xlabel('Різновид Рамену')
+    bar_ax.set_ylabel('Оцінка')
+    bar_ax.set_title('Різновиди Рамену за зменшенням оцінки')
     
 
     cur.execute(query_2)
@@ -61,7 +64,7 @@ with conn:
     grade_1 = grade + ['']
     grade.append(5 - grade[0])
     pie_ax.pie(grade, labels = grade_1, colors = plt.cm.Set3.colors)
-    pie_ax.text(-1.5, -2, variety[0])
+    pie_ax.text(-1.75, -2, variety[0])
     pie_ax.set_title ("Максимальна оцінка Рамену з 5")
 
     cur.execute(query_1)
@@ -73,6 +76,9 @@ with conn:
         variety.append(row[1])
 
     graph_ax.plot(variety, grade, marker ='o')
+    graph_ax.set_xlabel('Різновид Рамену')
+    graph_ax.set_ylabel('Оцінка')
+    graph_ax.set_title('Оцінки Рамену бренду Wei Wei')
     
    
 mng = plt.get_current_fig_manager()
